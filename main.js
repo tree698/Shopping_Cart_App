@@ -25,10 +25,14 @@ function createItem(item) {
   itemRow.setAttribute('data-id', id);
   itemRow.innerHTML = `
     <div class="item">
-        <span class="item__name">${item}</span>
-        <button class="item__delete" >
-            <i class="fa-solid fa-trash-can" data-id=${id}></i>
-        </button> 
+      <label class="item__checkbox">
+        <input class="checkbox__default" type="checkbox">
+        <span class="checkbox__new"></span>
+        <span class="item__name">${item}<span>
+      </label>
+      <button class="item__delete" >
+        <i class="fa-solid fa-trash-can" data-id=${id}></i>
+      </button> 
     </div>
     <div class="item__divider"></div>`;
   ++id;
