@@ -14,7 +14,7 @@ To demonstrate my coding skills with <span style="color:red">HTML, CSS and JavaS
 |**Version**|**Demo**|**Features**|
 |:--:|:--:|:--|
 |v1.1.0|![Shopping_List2](https://user-images.githubusercontent.com/53497516/155876162-262f3d94-ba43-476f-a8c0-cc836ef580d0.gif)|- Add checkbox and strikthrough</br>- Apply to form tag for input tag|
-|v1.0.0|<img src="https://user-images.githubusercontent.com/53497516/155865468-915b159f-541a-451a-97e5-30afabdc4f1a.gif" height="300">|- Apply to event delegation when a trash button is clicked|
+|v1.0.0|![Shopping_List](https://user-images.githubusercontent.com/53497516/155880684-24f6bd18-993d-4855-8098-9f88340e2d8e.gif)|- Apply to event delegation when a trash button is clicked|
 
 ## ⭐ To be added features
 - [X] Add the strikthrough for purchased items.
