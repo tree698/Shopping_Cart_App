@@ -1,7 +1,7 @@
 'use strict';
 
 const input = document.querySelector('.input__item');
-const inputBtn = document.querySelector('.input__button');
+const form = document.querySelector('.new-form');
 const items = document.querySelector('.items');
 const footerBtn = document.querySelector('.footer__button');
 
@@ -39,17 +39,9 @@ function createItem(item) {
   return itemRow;
 }
 
-inputBtn.addEventListener('click', () => {
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
   onAdd();
-});
-
-input.addEventListener('keydown', (event) => {
-  if (event.isComposing) {
-    return;
-  }
-  if (event.key === 'Enter') {
-    onAdd();
-  }
 });
 
 items.addEventListener('click', (event) => {
