@@ -1,4 +1,4 @@
-# Shopping List App
+# Shopping Cart App
 ## :star: What is it?
 It is a simple app to list up items to purchase.
 </br>
