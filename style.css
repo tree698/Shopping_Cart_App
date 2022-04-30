@@ -42,10 +42,12 @@ ul {
 }
 
 .new-form {
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .input__item,
+.input__price,
 .input__button {
   height: 36px;
   font-size: 14px;
@@ -54,12 +56,19 @@ ul {
 }
 
 .input__item {
-  width: 62%;
+  width: 42%;
+  margin-right: 5px;
+  color: #aeb1b5;
+}
+
+.input__price {
+  width: 22%;
+  margin-right: 5px;
   color: #aeb1b5;
 }
 
 .input__button {
-  width: 18%;
+  width: 15%;
   color: white;
   background-color: #6dc3a6;
   transition: all 300ms ease-in;

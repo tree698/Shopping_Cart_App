@@ -1,21 +1,21 @@
 'use strict';
 
-const input = document.querySelector('.input__item');
+const inputItem = document.querySelector('.input__item');
 const form = document.querySelector('.new-form');
 const items = document.querySelector('.items');
 const footerBtn = document.querySelector('.footer__button');
 
 function onAdd() {
-  const text = input.value;
+  const text = inputItem.value;
   if (text === '') {
-    input.focus();
+    inputItem.focus();
     return;
   }
   const itemRow = createItem(text);
   items.appendChild(itemRow);
   itemRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  input.value = '';
-  input.focus();
+  inputItem.value = '';
+  inputItem.focus();
 }
 
 let id = 0;
