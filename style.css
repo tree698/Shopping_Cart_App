@@ -138,9 +138,14 @@ ul {
   display: block;
 }
 
+.item__price {
+  color: #aeb1b5;
+}
+
 .item__delete {
   font-size: 16px;
   color: #aeb1b5;
+  margin-left: 20px;
   background-color: transparent;
   transition: all 300ms ease-in;
 }
