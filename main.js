@@ -5,10 +5,16 @@ const inputPrice = document.querySelector('.input__price');
 const form = document.querySelector('.new-form');
 const items = document.querySelector('.items');
 const footerBtn = document.querySelector('.footer__button');
+const totalPrice = document.querySelector('.footer-price');
+
+let total = 0;
+let id = 0;
+let priceList = [];
 
 function onAdd() {
   const text = inputItem.value;
-  const price = inputPrice.value;
+  const price = Number(inputPrice.value);
+
   if (text === '') {
     inputItem.focus();
     return;
@@ -25,9 +31,12 @@ function onAdd() {
   inputPrice.value = '';
   inputItem.focus();
   inputPrice.focus();
+
+  priceList.push(price);
+  total += price;
+  displayTotal(total);
 }
 
-let id = 0;
 function createItem(item, price) {
   const itemRow = document.createElement('li');
   itemRow.setAttribute('class', 'item__row');
@@ -40,7 +49,9 @@ function createItem(item, price) {
           <span class="item__name">${item}<span>
         </label>
         <div class="wrap__price-delete">
-          <span class="item__price">$${price ? price : 0}</span>
+          <span class="item__price">$${
+            price ? Number(price).toLocaleString() : 0
+          }</span>
           <button class="item__delete" >
             <i class="fa-solid fa-trash-can" data-id=${id}></i>
           </button> 
@@ -49,6 +60,17 @@ function createItem(item, price) {
       <div class="item__divider"></div>`;
   ++id;
   return itemRow;
+}
+
+function displayTotal(total) {
+  const totalWithComma = Number(total).toLocaleString();
+  totalPrice.textContent = `${totalWithComma}`;
+}
+
+function init() {
+  total = 0;
+  id = 0;
+  priceList = [];
 }
 
 form.addEventListener('submit', (event) => {
@@ -62,9 +84,18 @@ items.addEventListener('click', (event) => {
     const toBeDeleted = document.querySelector(`.item__row[data-id="${id}"`);
     toBeDeleted.remove();
   }
+
+  total -= Number(priceList[id]);
+  displayTotal(total);
+  if (total === 0) {
+    init();
+  }
 });
 
 footerBtn.addEventListener('click', () => {
   const toBeDeleted = document.querySelectorAll('.item__row');
   toBeDeleted.forEach((item) => item.remove());
+
+  init();
+  displayTotal(total);
 });
