@@ -9,7 +9,6 @@ const totalPrice = document.querySelector('.footer-price');
 
 let total = 0;
 let id = 0;
-let priceList = [];
 
 function onAdd() {
   const text = inputItem.value;
@@ -32,7 +31,6 @@ function onAdd() {
   inputItem.focus();
   inputPrice.focus();
 
-  priceList.push(price);
   total += price;
   displayTotal(total);
 }
@@ -49,9 +47,9 @@ function createItem(item, price) {
           <span class="item__name">${item}<span>
         </label>
         <div class="wrap__price-delete">
-          <span class="item__price">$${
-            price ? Number(price).toLocaleString() : 0
-          }</span>
+          <span class="item__price" data-id=${id}>$${
+    price ? Number(price).toLocaleString() : 0
+  }</span>
           <button class="item__delete" >
             <i class="fa-solid fa-trash-can" data-id=${id}></i>
           </button> 
@@ -67,12 +65,6 @@ function displayTotal(total) {
   totalPrice.textContent = `${totalWithComma}`;
 }
 
-function init() {
-  total = 0;
-  id = 0;
-  priceList = [];
-}
-
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   onAdd();
@@ -81,21 +73,23 @@ form.addEventListener('submit', (event) => {
 items.addEventListener('click', (event) => {
   let id = event.target.dataset.id;
   if (id) {
+    const inputedPrice = document.querySelector(`.item__price[data-id="${id}"`)
+      .innerHTML;
+    const regex = /[^$,]/gm;
+    const toBeRemovePrice = inputedPrice.match(regex);
+    total -= Number(toBeRemovePrice.join(''));
+
     const toBeDeleted = document.querySelector(`.item__row[data-id="${id}"`);
     toBeDeleted.remove();
   }
 
-  total -= Number(priceList[id]);
   displayTotal(total);
-  if (total === 0) {
-    init();
-  }
 });
 
 footerBtn.addEventListener('click', () => {
   const toBeDeleted = document.querySelectorAll('.item__row');
   toBeDeleted.forEach((item) => item.remove());
 
-  init();
+  total = 0;
   displayTotal(total);
 });
