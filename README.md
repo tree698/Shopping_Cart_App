@@ -1,4 +1,4 @@
-# Shopping Cart App
+# Shopping Cart App &nbsp; :shopping_cart:
 ## :star: What is it?
 - A simple app to list up items to purchase.
 
